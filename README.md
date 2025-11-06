@@ -1,70 +1,104 @@
-# Getting Started with Create React App
+# Hodler Landing Page
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Marketing site for Hodler - a cryptocurrency trading simulator Android app.
 
-## Available Scripts
+## Live Site
+Coming soon - Deploying to Vercel by end of Week 1
 
-In the project directory, you can run:
+## About Hodler
+Hodler is an Android app that lets users practice crypto trading with $10,000 virtual money. This landing page serves as the marketing site to explain features and drive app downloads.
 
-### `npm start`
+**Key Features:**
+- Real-time cryptocurrency prices via CoinGecko API
+- Virtual portfolio tracking with $10,000 starting balance
+- Global leaderboards and competitive gameplay
+- Risk-free learning environment for beginners
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## Tech Stack
+- **Frontend**: React 19
+- **UI Library**: Material UI 5
+- **Deployment**: Vercel (planned)
+- **Version Control**: Git/GitHub
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## Local Development
 
-### `npm test`
+### Prerequisites
+- Node.js v20+ (managed via NVM)
+- npm
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### Installation
+```bash
+# Clone repository
+git clone https://github.com/luisdelae/hodler-landing.git
+cd hodler-landing
 
-### `npm run build`
+# Install dependencies
+npm install
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+# Start development server
+npm start
+```
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+Open [http://localhost:3000](http://localhost:3000) to view in browser.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+### Available Scripts
+- `npm start` - Run development server
+- `npm run build` - Create production build
+- `npm test` - Run tests
 
-### `npm run eject`
+## Learning Context
+This landing page is part of a larger learning initiative to build full-stack web development skills, specifically:
+- React fundamentals and hooks (useState, useEffect)
+- Material UI component library
+- Responsive web design
+- AWS backend integration (coming in Weeks 3-8)
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+Coming from Android development (Jetpack Compose, MVVM, Clean Architecture), this project helps translate mobile development patterns to modern web development.
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+## Development Timeline
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+### Week 1 (Nov 3-9, 2025) - In Progress
+- [x] Project setup with Create React App
+- [x] Basic component structure (Hero, FeatureCard)
+- [x] Live price ticker with CoinGecko API
+- [ ] Material UI integration (Day 3)
+- [ ] Complete all landing page sections (Day 4)
+- [ ] Deploy to Vercel with auto-deployment (Day 5)
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+### Week 2 (Nov 10-16, 2025)
+AWS fundamentals + Lambda setup (separate backend repo - no changes to this project)
 
-## Learn More
+### Week 3 (Nov 17-23, 2025)
+- [ ] Install Redux for state management
+- [ ] Add login/register forms
+- [ ] Connect to Lambda authentication APIs
+- [ ] Store JWT tokens in localStorage
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+### Weeks 4-5 (Nov 24 - Dec 7, 2025)
+- [ ] Add user dashboard page
+- [ ] Display global leaderboard component
+- [ ] Show user rank and stats
+- [ ] Integrate with leaderboard APIs
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+### Weeks 6-7 (Dec 8-21, 2025)
+- [ ] Environment variables for API endpoints
+- [ ] Production build optimization
 
-### Code Splitting
+### Target Completion: End of December 2025
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+## Related Projects
+- **Hodler Android App** (v1): Cryptocurrency portfolio tracker with Clean Architecture [Complete](https://github.com/luisdelae/hodler-android)
+- **Hodler Android App** (v2): Adding trading simulator features (coming soon)
+- **Hodler Backend**: AWS Lambda APIs for leaderboards and authentication (coming soon)
 
-### Analyzing the Bundle Size
+## Author
+**Luis De La Espriella**  
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+[GitHub](https://github.com/luisdelae) • [LinkedIn](https://linkedin.com/in/luisdelaespriella)
 
-### Making a Progressive Web App
+## License
+This project is a portfolio demonstration and learning exercise. Not licensed for commercial use.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+---
 
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+**Status**: 🚧 In Active Development 🚧
