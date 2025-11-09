@@ -4,43 +4,43 @@ import { AccountBalance, TrendingUp, EmojiEvents, School, BarChart, Security } f
 function FeaturesSection() {
     const features = [
         {
-            icon: <AccountBalance fontSize="large" />,
-            title: "Virtual Trading",
-            description: "Start with $10,000 virtual money. Learn without financial risk."
+            icon: <AccountBalance fontSize='large' />,
+            title: 'Virtual Trading',
+            description: 'Start with $10,000 virtual money. Learn without financial risk.'
         },
         {
-            icon: <TrendingUp fontSize="large" />,
-            title: "Real-Time Prices",
-            description: "Trade with live cryptocurrency prices from CoinGecko API."
+            icon: <TrendingUp fontSize='large' />,
+            title: 'Real-Time Prices',
+            description: 'Trade with live cryptocurrency prices from CoinGecko API.'
         },
         {
-            icon: <EmojiEvents fontSize="large" />,
-            title: "Global Leaderboards",
-            description: "Compete with traders worldwide and climb the rankings."
+            icon: <EmojiEvents fontSize='large' />,
+            title: 'Global Leaderboards',
+            description: 'Compete with traders worldwide and climb the rankings.'
         },
         {
-            icon: <School fontSize="large" />,
-            title: "Learn Trading",
-            description: "Educational tools to understand market dynamics and strategies."
+            icon: <School fontSize='large' />,
+            title: 'Learn Trading',
+            description: 'Educational tools to understand market dynamics and strategies.'
         },
         {
-            icon: <BarChart fontSize="large" />,
-            title: "Performance Analytics",
-            description: "Track your portfolio performance with detailed charts and metrics."
+            icon: <BarChart fontSize='large' />,
+            title: 'Performance Analytics',
+            description: 'Track your portfolio performance with detailed charts and metrics.'
         },
         {
-            icon: <Security fontSize="large" />,
-            title: "Risk-Free",
-            description: "Practice strategies without losing real money. Perfect for beginners."
+            icon: <Security fontSize='large' />,
+            title: 'Risk-Free',
+            description: 'Practice strategies without losing real money. Perfect for beginners.'
         }
     ];
 
     return (
-        <Container maxWidth="lg"  sx={{ py: 8 }}>
-            <Typography variant="h3" align="center" gutterBottom>
+        <Container id='features' maxWidth='lg'  sx={{ py: 8 }}>
+            <Typography variant='h3' align='center' gutterBottom>
                 Why Choose Hodler?
             </Typography>
-            <Typography variant="h6" align="center" color="text.secondary" component="p">
+            <Typography variant='h6' align='center' color='text.secondary' component='p'>
                 Everything you need to master crypto trading
             </Typography>
 
@@ -63,10 +63,10 @@ function FeaturesSection() {
                                 <Box sx={{ color: 'primary.main', mb: 2}}>
                                     {feature.icon}
                                 </Box>
-                                <Typography variant="h5" gutterBottom>
+                                <Typography variant='h5' gutterBottom>
                                     {feature.title}
                                 </Typography>
-                                <Typography variant="body1" color='text.secondary'>
+                                <Typography variant='body1' color='text.secondary'>
                                     {feature.description}
                                 </Typography>
                             </CardContent>

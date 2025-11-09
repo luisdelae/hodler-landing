@@ -15,17 +15,17 @@ function Hero() {
                 textAlign: 'center'
             }}
         >
-            <Container maxWidth="md">
-                <Typography variant="h2" gutterBottom>
+            <Container maxWidth='md'>
+                <Typography variant='h2' gutterBottom>
                     Hodler - Crypto Trading Simulator
                 </Typography>
-                <Typography variant="h5" gutterBottom>
+                <Typography variant='h5' gutterBottom>
                     Practice trading without risking real money. Start with $10,000 virtual cash.
                 </Typography>
                 <Button
                     onClick={handleClick}
-                    variant="contained"
-                    size="large"
+                    variant='contained'
+                    size='large'
                     startIcon={<Download/>}
                     sx={{
                         bgcolor: 'white',
