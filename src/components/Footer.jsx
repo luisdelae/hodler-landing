@@ -15,7 +15,7 @@ function Footer() {
                 </Box>
 
                 <Typography variant='body2' align='center' sx={{ mb: 2 }}>
-                    <Link href='#featuress' color='inherit' sx={{ mx: 2 }}>Features</Link>
+                    <Link href='#features' color='inherit' sx={{ mx: 2 }}>Features</Link>
                     <Link href='#about' color='inherit' sx={{ mx: 2 }}>About</Link>
                     <Link href='#' color='inherit' sx={{ mx: 2 }}>Privacy</Link>
                     <Link href='#' color='inherit' sx={{ mx: 2 }}>Contact</Link>

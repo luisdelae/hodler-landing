@@ -24,22 +24,19 @@ function AboutSection() {
                             practicing new strategies, and anyone wanting to understand market behavior.
                         </Typography>
                     </Grid>
-                    <Grid size={{ xs: 12, md: 6 }}>
-                        { /* Screenshots here. Probably do three? */ }
-                        <Box
-                            sx={{
-                                height: 400,
-                                bgcolor: 'primary.light',
-                                borderRadius: 2,
-                                display: 'flex',
-                                alignItems: 'center',
-                                justifyContent: 'center'
-                            }}
-                        >
-                            <Typography variant='h6' color='white'>
-                                SS placeholder text here.
-                            </Typography>
-                        </Box>
+                    <Grid container spacing={2}>
+                        <Grid size={{ xs: 12, sm: 6, md: 3 }} sx={{ display: 'flex', justifyContent: 'center' }}>
+                            <Box component="img" src="/images/market.png" sx={{ maxWidth: '100%', height: 'auto', borderRadius: 2 }} />
+                        </Grid>
+                        <Grid size={{ xs: 12, sm: 6, md: 3 }} sx={{ display: 'flex', justifyContent: 'center' }}>
+                            <Box component="img" src="/images/portfolio.png" sx={{ maxWidth: '100%', height: 'auto', borderRadius: 2 }} />
+                        </Grid>
+                        <Grid size={{ xs: 12, sm: 6, md: 3 }} sx={{ display: 'flex', justifyContent: 'center' }}>
+                            <Box component="img" src="/images/add-holding.png" sx={{ maxWidth: '100%', height: 'auto', borderRadius: 2 }} />
+                        </Grid>
+                        <Grid size={{ xs: 12, sm: 6, md: 3 }} sx={{ display: 'flex', justifyContent: 'center' }}>
+                            <Box component="img" src="/images/coin-detail.png" sx={{ maxWidth: '100%', height: 'auto', borderRadius: 2 }} />
+                        </Grid>
                     </Grid>
                 </Grid>
             </Container>
