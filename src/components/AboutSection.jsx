@@ -2,7 +2,7 @@ import { Container, Typography, Grid, Box } from '@mui/material';
 
 function AboutSection() {
     return (
-        <Box sx={{ bgcolor: 'grey.50', py: 8 }}>
+        <Box sx={{ py: 8 }}>
             <Container id='about' maxWidth="lg">
                 <Grid cointainer spacing={6} alignContent="center">
                     <Grid size={{ xs: 12, md: 6 }}>

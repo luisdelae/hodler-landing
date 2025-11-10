@@ -1,8 +1,9 @@
 import { AppBar, Toolbar, Typography, Button, Box, IconButton, Drawer, List, ListItem, ListItemButton, ListItemText } from '@mui/material';
 import { Android, Menu as MenuIcon } from '@mui/icons-material';
 import { useState } from 'react';
+import { Brightness4, Brightness7 } from '@mui/icons-material';
 
-function NavBar() {
+function NavBar({ darkMode, setDarkMode }) {
     const [drawerOpen, setDrawerOpen] = useState(false);
 
     const handleScroll = (id) => {
@@ -29,6 +30,15 @@ function NavBar() {
                     <Typography variant='h6' sx={{ flexGrow: 1 }}>
                         Hodler
                     </Typography>
+
+                    {/* Dark mode toggle */}
+                    <IconButton 
+                        color='inherit'
+                        onClick={() => setDarkMode(!darkMode)}
+                        sx={{ mr: 2 }}
+                    >
+                        {darkMode ? <Brightness7 /> : <Brightness4 />}
+                    </IconButton>
 
                     {/* Desktop buttons */}
                     <Box sx={{ display: { xs: 'none', sm: 'block' } }}>

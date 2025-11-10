@@ -15,7 +15,7 @@ function Hero() {
                 textAlign: 'center'
             }}
         >
-            <Container maxWidth='md'>
+            <Container maxWidth='lg'>
                 <Typography variant='h2' gutterBottom>
                     Hodler - Crypto Trading Simulator
                 </Typography>
