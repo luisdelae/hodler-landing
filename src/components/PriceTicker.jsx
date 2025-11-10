@@ -28,7 +28,6 @@ function PriceTicker({coinName}) {
     return (
         <div>
             <p>{coinName}: ${coinPrice?.toLocaleString()}</p>
-            <small>Live price from CoinGecko</small>
         </div>
     );
 }

@@ -1,10 +1,19 @@
-import { Box, Container, Typography, Link, IconButton } from '@mui/material';
+import { Box, Container, Typography, Link, IconButton, Grid } from '@mui/material';
 import { GitHub, Email } from '@mui/icons-material';
+import PriceTicker from './PriceTicker';
 
 function Footer() {
     return (
         <Box sx={{ bgcolor: 'grey.900', color: 'white', py: 6 }}>
             <Container maxWidth='lg'>
+                <Box sx={{ borderTop: '1px solid', borderColor: 'divider',textAlign: 'center', py: 2, mb: 3 }}>
+                    <Grid container spacing={2}>
+                        <Grid size={{ xs: 4 }}><PriceTicker coinName="bitcoin" /></Grid>
+                        <Grid size={{ xs: 4 }}><PriceTicker coinName="ethereum" /></Grid>
+                        <Grid size={{ xs: 4 }}><PriceTicker coinName="solana" /></Grid>
+                    </Grid>
+                    <Typography variant='body3'>Live pricess from CoinGecko</Typography>
+                </Box>
                 <Box sx={{ textAlign: 'center', mg: 3 }}>
                     <IconButton color='inherit' aria-label='Github'>
                         <GitHub />

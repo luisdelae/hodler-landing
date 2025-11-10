@@ -62,8 +62,8 @@ Coming from Android development (Jetpack Compose, MVVM, Clean Architecture), thi
 - [x] Basic component structure (Hero, FeatureCard)
 - [x] Live price ticker with CoinGecko API
 - [x] Material UI integration (Day 3)
-- [ ] Complete all landing page sections (Day 4)
-- [ ] Deploy to Vercel with auto-deployment (Day 5)
+- [x] Complete all landing page sections (Day 4)
+- [x] Deploy to Vercel with auto-deployment (Day 5)
 
 ### Week 2 (Nov 10-16, 2025)
 AWS fundamentals + Lambda setup (separate backend repo - no changes to this project)
