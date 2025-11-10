@@ -7,29 +7,34 @@ import CTASection from './components/CTASection';
 import Footer from './components/Footer';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import { CssBaseline } from '@mui/material';
-import { useState } from 'react';
+import { useState, useEffect  } from 'react';
 
 function App() {
-  const [darkMode, setDarkMode] = useState(false);
+  const [darkMode, setDarkMode] = useState(() => {
+    const saved = localStorage.getItem('darkMode');
+    return saved === 'true';
+  });
+
+  useEffect(() => {
+    localStorage.setItem('darkMode', darkMode);
+  }, [darkMode]);
 
   const theme = createTheme({
     palette: {
       mode: darkMode ? 'dark' : 'light',
       ...(darkMode ? {
-        // Dark mode colors (modern dark teal/green)
         primary: {
-          main: '#58a6ff',  // GitHub blue
+          main: '#58a6ff',
         },
         background: {
-          default: '#0d1117',  // GitHub dark
-          paper: '#161b22',    // Slightly lighter
+          default: '#0d1117',
+          paper: '#161b22',
         },
         text: {
           primary: '#c9d1d9',
           secondary: '#8b949e',
         },
       } : {
-        // Light mode colors
         primary: {
           main: '#1976d2',
         },
