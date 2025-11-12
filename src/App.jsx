@@ -8,6 +8,7 @@ import Footer from './components/Footer';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import { CssBaseline } from '@mui/material';
 import { useState, useEffect } from 'react';
+import TestAPI from './components/TestAPI';
 
 function App() {
   const [darkMode, setDarkMode] = useState(() => {
@@ -53,6 +54,7 @@ function App() {
       <CssBaseline />
       <NavBar darkMode={darkMode} setDarkMode={setDarkMode} />
       <Hero />
+      <TestAPI /> 
       <FeaturesSection />
       <AboutSection />
       <HowItWorksSection />

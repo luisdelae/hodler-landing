@@ -4,7 +4,7 @@ function AboutSection() {
   return (
     <Box sx={{ py: 8 }}>
       <Container id="about" maxWidth="lg">
-        <Grid cointainer spacing={6} alignContent="center">
+        <Grid container spacing={6} alignContent="center">
           <Grid size={{ xs: 12, md: 6 }}>
             <Typography variant="h3" gutterBottom>
               Learn Trading Without the Risk
