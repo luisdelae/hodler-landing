@@ -9,6 +9,7 @@ import { createTheme, ThemeProvider } from '@mui/material/styles';
 import { CssBaseline } from '@mui/material';
 import { useState, useEffect } from 'react';
 import TestAPI from './components/TestAPI';
+import ProfileTest from './components/ProfileTest';
 
 function App() {
   const [darkMode, setDarkMode] = useState(() => {
@@ -55,6 +56,7 @@ function App() {
       <NavBar darkMode={darkMode} setDarkMode={setDarkMode} />
       <Hero />
       <TestAPI /> 
+      <ProfileTest />
       <FeaturesSection />
       <AboutSection />
       <HowItWorksSection />
