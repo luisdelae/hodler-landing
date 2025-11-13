@@ -82,8 +82,8 @@ Coming from Android development (Jetpack Compose, MVVM, Clean Architecture), thi
 - [x] DynamoDB Users table + getUserProfile Lambda
 - [x] User registration Lambda + API endpoint
 - [x] RegisterForm component
-- [ ] User login Lambda + JWT tokens
-- [ ] LoginForm component
+- [x] User login Lambda + JWT tokens
+- [x] LoginForm component
 - [ ] Auth state management with Context
 - [ ] Update profile Lambda + endpoint
 - [ ] ProfileEditor component

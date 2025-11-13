@@ -9,6 +9,7 @@ import { createTheme, ThemeProvider } from '@mui/material/styles';
 import { CssBaseline } from '@mui/material';
 import { useState, useEffect } from 'react';
 import RegisterForm from './components/RegisterForm';
+import LoginForm from './components/LoginForm';
 
 function App() {
     const [darkMode, setDarkMode] = useState(() => {
@@ -58,6 +59,7 @@ function App() {
             <AboutSection />
             <HowItWorksSection />
             <RegisterForm />
+            <LoginForm />
             <CTASection />
             <Footer />
         </ThemeProvider>
