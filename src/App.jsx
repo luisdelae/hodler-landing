@@ -10,6 +10,7 @@ import { CssBaseline } from '@mui/material';
 import { useState, useEffect } from 'react';
 import RegisterForm from './components/RegisterForm';
 import LoginForm from './components/LoginForm';
+import { AuthProvider } from './context/AuthContext';
 
 function App() {
     const [darkMode, setDarkMode] = useState(() => {
@@ -53,15 +54,17 @@ function App() {
     return (
         <ThemeProvider theme={theme}>
             <CssBaseline />
-            <NavBar darkMode={darkMode} setDarkMode={setDarkMode} />
-            <Hero />
-            <FeaturesSection />
-            <AboutSection />
-            <HowItWorksSection />
-            <RegisterForm />
-            <LoginForm />
-            <CTASection />
-            <Footer />
+            <AuthProvider>
+                <NavBar darkMode={darkMode} setDarkMode={setDarkMode} />
+                <Hero />
+                <FeaturesSection />
+                <AboutSection />
+                <HowItWorksSection />
+                <RegisterForm />
+                <LoginForm />
+                <CTASection />
+                <Footer />
+            </AuthProvider>
         </ThemeProvider>
     );
 }

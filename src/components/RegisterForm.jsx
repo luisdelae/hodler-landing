@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { Box, TextField, Button, Typography, Alert, Paper } from '@mui/material';
+import { useAuth } from '../context/AuthContext';
 
 function RegisterForm() {
     const [email, setEmail] = useState('');
@@ -7,7 +8,7 @@ function RegisterForm() {
     const [username, setUsername] = useState('');
     const [loading, setLoading] = useState(false);
     const [message, setMessage] = useState(null);
-    const [registered, setRegistered] = useState(false);
+    const { register, user } = useAuth();
 
     const handleRegister = async (e) => {
         e.preventDefault();
@@ -27,11 +28,11 @@ function RegisterForm() {
             const data = await response.json();
 
             if (response.ok) {
+                register(data.token, data.userId, data.username);
                 setMessage({
                     type: 'success',
                     text: `${data.message} Welcome, ${data.username}!`,
                 });
-                setRegistered(true);
                 setEmail('');
                 setPassword('');
                 setUsername('');
@@ -46,22 +47,8 @@ function RegisterForm() {
         setLoading(false);
     };
 
-    if (registered) {
-        return (
-            <Box sx={{ p: 4, maxWidth: 500, mx: 'auto' }}>
-                <Paper elevation={3} sx={{ p: 4, textAlign: 'center' }}>
-                    <Typography variant="h`4" gutterBottom color="success.main">
-                        Account Created!
-                    </Typography>
-                    <Alert severity="success" sx={{ mb: 3 }}>
-                        {message.text}
-                    </Alert>
-                    <Button variant="outlined" onClick={() => setRegistered(false)}>
-                        Create Another Account
-                    </Button>
-                </Paper>
-            </Box>
-        );
+    if (user) {
+        return <></>;
     }
 
     return (

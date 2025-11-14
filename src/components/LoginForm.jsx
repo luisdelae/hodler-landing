@@ -1,13 +1,14 @@
 import { useState } from 'react';
 import { Box, TextField, Button, Typography, Alert, Paper } from '@mui/material';
+import { useAuth } from '../context/AuthContext';
 
 function LoginForm() {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [loading, setLoading] = useState(false);
     const [message, setMessage] = useState(null);
-    const [loggedIn, setLoggedIn] = useState(false);
-    const [userData, setUserData] = useState(null);
+
+    const { user, login, logout } = useAuth();
 
     const handleLogin = async (e) => {
         e.preventDefault();
@@ -27,17 +28,8 @@ function LoginForm() {
             const data = await response.json();
 
             if (response.ok) {
-                localStorage.setItem('authToken', data.token);
-                localStorage.setItem('userId', data.userId);
-                localStorage.setItem('username', data.username);
-
+                login(data.token, data.userId, data.username);
                 setMessage({ type: 'success', text: data.message });
-                setLoggedIn(true);
-                setUserData({
-                    username: data.username,
-                    userId: data.userId,
-                });
-
                 setEmail('');
                 setPassword('');
             } else {
@@ -52,20 +44,16 @@ function LoginForm() {
     };
 
     const handleLogout = () => {
-        localStorage.removeItem('authToken');
-        localStorage.removeItem('userId');
-        localStorage.removeItem('username');
-        setLoggedIn(false);
-        setUserData(null);
+        logout();
         setMessage({ tyoe: 'success', text: 'Logged out successfully' });
     };
 
-    if (loggedIn) {
+    if (user) {
         return (
             <Box sx={{ p: 4, maxWidth: 500, mx: 'auto' }}>
                 <Paper elevation={3} sx={{ p: 4, textAlign: 'center' }}>
                     <Typography variant="h4" gutterBottom color="success.main">
-                        Welcome, {userData.username}!
+                        Welcome, {user.username}!
                     </Typography>
                     <Button variant="outlined" color="error" onClick={handleLogout}>
                         Logout

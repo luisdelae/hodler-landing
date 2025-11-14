@@ -4,7 +4,7 @@ Marketing site for Hodler - a cryptocurrency trading simulator Android app.
 
 ## Live Site
 
-Coming soon - Deploying to Vercel by end of Week 1
+https://hodler-landing.vercel.app/
 
 ## About Hodler
 
@@ -21,7 +21,7 @@ Hodler is an Android app that lets users practice crypto trading with $10,000 vi
 
 - **Frontend**: React 19
 - **UI Library**: Material UI 5
-- **Deployment**: Vercel (planned)
+- **Deployment**: Vercel
 - **Version Control**: Git/GitHub
 
 ## Local Development
@@ -84,7 +84,7 @@ Coming from Android development (Jetpack Compose, MVVM, Clean Architecture), thi
 - [x] RegisterForm component
 - [x] User login Lambda + JWT tokens
 - [x] LoginForm component
-- [ ] Auth state management with Context
+- [x] Auth state management with Context
 - [ ] Update profile Lambda + endpoint
 - [ ] ProfileEditor component
 
@@ -99,10 +99,13 @@ Coming from Android development (Jetpack Compose, MVVM, Clean Architecture), thi
 ### Weeks 4-5 (Nov 24 - Dec 7, 2025)
 
 - [ ] Leaderboard backend (Lambda + DynamoDB + EventBridge)
+- [ ] SNS for achievement notifications ("You hit top 10!")
+- [ ] Email verification on registration (SNS + verification tokens, refactor registration)
+- [ ] SQS for async leaderboard processing
+- [ ] DynamoDB GSI for efficient email lookups (refactor from scan)
 - [ ] Add user dashboard page
 - [ ] Display global leaderboard component
 - [ ] Show user rank and stats
-- [ ] Integrate with leaderboard APIs
 
 ### Weeks 6-7 (Dec 8-21, 2025)
 
