@@ -1,6 +1,7 @@
 import { useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { loginSuccess } from '../store/slices/authSlice';
 import { Box, TextField, Button, Typography, Alert, Paper } from '@mui/material';
-import { useAuth } from '../context/AuthContext';
 
 function RegisterForm() {
     const [email, setEmail] = useState('');
@@ -8,7 +9,9 @@ function RegisterForm() {
     const [username, setUsername] = useState('');
     const [loading, setLoading] = useState(false);
     const [message, setMessage] = useState(null);
-    const { register, user } = useAuth();
+
+    const dispatch = useDispatch();
+    const user = useSelector((state) => state.auth.user);
 
     const handleRegister = async (e) => {
         e.preventDefault();
@@ -28,7 +31,13 @@ function RegisterForm() {
             const data = await response.json();
 
             if (response.ok) {
-                register(data.token, data.userId, data.username);
+                dispatch(
+                    loginSuccess({
+                        token: data.token,
+                        userId: data.userId,
+                        username: data.username,
+                    })
+                );
                 setMessage({
                     type: 'success',
                     text: `${data.message} Welcome, ${data.username}!`,

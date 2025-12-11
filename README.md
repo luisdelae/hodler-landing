@@ -76,7 +76,7 @@ Coming from Android development (Jetpack Compose, MVVM, Clean Architecture), thi
 - [x] Dark mode toggle
 - [x] Deploy to Vercel with auto-deployment
 
-### Week 2 (Nov 10-16, 2025) - In Progress
+### Week 2 (Nov 10-16, 2025) - Complete ✅
 
 - [x] AWS fundamentals + security setup
 - [x] DynamoDB Users table + getUserProfile Lambda
@@ -88,13 +88,12 @@ Coming from Android development (Jetpack Compose, MVVM, Clean Architecture), thi
 - [x] Update profile Lambda + endpoint
 - [x] ProfileEditor component
 
-### Week 3 (Nov 17-23, 2025)
+### Week 3 (Nov 17-23, 2025) - In Progress
 
-- [ ] Install Redux Toolkit
-- [ ] Migrate auth state from Context to Redux
-- [ ] Add Redux DevTools
-- [ ] Refactor components to use Redux
-- [ ] Add loading/error states globally
+- [x] Install Redux Toolkit
+- [x] Migrate auth state from Context to Redux
+- [x] Refactor components to use Redux
+- [] Add loading/error states globally
 
 ### Weeks 4-5 (Nov 24 - Dec 7, 2025)
 

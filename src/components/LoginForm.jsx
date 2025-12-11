@@ -1,19 +1,21 @@
 import { useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { loginStart, loginSuccess, loginFailure, logout } from '../store/slices/authSlice';
 import { Box, TextField, Button, Typography, Alert, Paper } from '@mui/material';
-import { useAuth } from '../context/AuthContext';
 
 function LoginForm() {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
-    const [loading, setLoading] = useState(false);
     const [message, setMessage] = useState(null);
 
-    const { user, login, logout } = useAuth();
+    const dispatch = useDispatch();
+    const { user, loading } = useSelector((state) => state.auth);
 
     const handleLogin = async (e) => {
         e.preventDefault();
-        setLoading(true);
         setMessage(null);
+
+        dispatch(loginStart());
 
         try {
             const response = await fetch(
@@ -28,7 +30,13 @@ function LoginForm() {
             const data = await response.json();
 
             if (response.ok) {
-                login(data.token, data.userId, data.username);
+                dispatch(
+                    loginSuccess({
+                        token: data.token,
+                        userId: data.userId,
+                        username: data.username,
+                    })
+                );
                 setMessage({ type: 'success', text: data.message });
                 setEmail('');
                 setPassword('');
@@ -36,15 +44,15 @@ function LoginForm() {
                 setMessage({ type: 'error', text: data.error });
             }
         } catch (err) {
-            setMessage({ type: 'error', text: 'Network error. Please try again.' });
+            const errorMessage = 'Network error. Please try again.';
+            dispatch(loginFailure(errorMessage));
+            setMessage({ type: 'error', text: errorMessage });
             console.error('Login error:', err);
         }
-
-        setLoading(false);
     };
 
     const handleLogout = () => {
-        logout();
+        dispatch(logout());
         setMessage({ tyoe: 'success', text: 'Logged out successfully' });
     };
 

@@ -1,17 +1,9 @@
-import AboutSection from './components/AboutSection';
-import NavBar from './components/NavBar';
-import Hero from './components/Hero';
-import FeaturesSection from './components/FeaturesSection';
-import HowItWorksSection from './components/HowItWorksSection';
-import CTASection from './components/CTASection';
-import Footer from './components/Footer';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import { CssBaseline } from '@mui/material';
 import { useState, useEffect } from 'react';
-import RegisterForm from './components/RegisterForm';
-import LoginForm from './components/LoginForm';
-import { AuthProvider } from './context/AuthContext';
-import ProfileEditor from './components/ProfileEditor';
+import { Provider } from 'react-redux';
+import store from './store';
+import AppContent from './components/AppContent';
 
 function App() {
     const [darkMode, setDarkMode] = useState(() => {
@@ -53,21 +45,12 @@ function App() {
     });
 
     return (
-        <ThemeProvider theme={theme}>
-            <CssBaseline />
-            <AuthProvider>
-                <NavBar darkMode={darkMode} setDarkMode={setDarkMode} />
-                <Hero />
-                <FeaturesSection />
-                <AboutSection />
-                <HowItWorksSection />
-                <RegisterForm />
-                <LoginForm />
-                <ProfileEditor />
-                <CTASection />
-                <Footer />
-            </AuthProvider>
-        </ThemeProvider>
+        <Provider store={store}>
+            <ThemeProvider theme={theme}>
+                <CssBaseline />
+                <AppContent darkMode={darkMode} setDarkMode={setDarkMode} />
+            </ThemeProvider>
+        </Provider>
     );
 }
 

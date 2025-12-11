@@ -1,9 +1,11 @@
 import { useState, useEffect } from 'react';
 import { Box, TextField, Button, Typography, Alert, Paper, CircularProgress } from '@mui/material';
-import { useAuth } from '../context/AuthContext';
+import { useDispatch, useSelector } from 'react-redux';
+import { updateUser } from '../store/slices/authSlice';
 
 function ProfileEditor() {
-    const { user } = useAuth();
+    const dispatch = useDispatch();
+    const user = useSelector((state) => state.auth.user);
     const [username, setUsername] = useState('');
     const [email, setEmail] = useState('');
     const [loading, setLoading] = useState(false);
@@ -12,6 +14,8 @@ function ProfileEditor() {
 
     useEffect(() => {
         if (!user) return;
+
+        setMessage(null);
 
         const fetchProfile = async () => {
             try {
@@ -32,7 +36,7 @@ function ProfileEditor() {
         };
 
         fetchProfile();
-    }, [user]);
+    }, [user, dispatch]);
 
     const handleUpdate = async (e) => {
         e.preventDefault();
@@ -55,6 +59,8 @@ function ProfileEditor() {
             const data = await res.json();
 
             if (res.ok) {
+                console.log(data);
+                dispatch(updateUser({ username: data.user.username }));
                 setMessage({ type: 'success', text: data.message });
             } else {
                 setMessage({ type: 'error', text: data.error });
