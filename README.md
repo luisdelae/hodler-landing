@@ -85,8 +85,8 @@ Coming from Android development (Jetpack Compose, MVVM, Clean Architecture), thi
 - [x] User login Lambda + JWT tokens
 - [x] LoginForm component
 - [x] Auth state management with Context
-- [ ] Update profile Lambda + endpoint
-- [ ] ProfileEditor component
+- [x] Update profile Lambda + endpoint
+- [x] ProfileEditor component
 
 ### Week 3 (Nov 17-23, 2025)
 

@@ -11,6 +11,7 @@ import { useState, useEffect } from 'react';
 import RegisterForm from './components/RegisterForm';
 import LoginForm from './components/LoginForm';
 import { AuthProvider } from './context/AuthContext';
+import ProfileEditor from './components/ProfileEditor';
 
 function App() {
     const [darkMode, setDarkMode] = useState(() => {
@@ -62,6 +63,7 @@ function App() {
                 <HowItWorksSection />
                 <RegisterForm />
                 <LoginForm />
+                <ProfileEditor />
                 <CTASection />
                 <Footer />
             </AuthProvider>
