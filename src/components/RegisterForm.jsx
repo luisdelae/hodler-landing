@@ -1,22 +1,19 @@
 import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { loginSuccess } from '../store/slices/authSlice';
+import { loginFailure, loginStart, loginSuccess } from '../store/slices/authSlice';
 import { Box, TextField, Button, Typography, Alert, Paper } from '@mui/material';
 
 function RegisterForm() {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [username, setUsername] = useState('');
-    const [loading, setLoading] = useState(false);
-    const [message, setMessage] = useState(null);
 
     const dispatch = useDispatch();
-    const user = useSelector((state) => state.auth.user);
+    const { user, loading, error } = useSelector((state) => state.auth);
 
     const handleRegister = async (e) => {
         e.preventDefault();
-        setLoading(true);
-        setMessage(null);
+        dispatch(loginStart());
 
         try {
             const response = await fetch(
@@ -38,22 +35,16 @@ function RegisterForm() {
                         username: data.username,
                     })
                 );
-                setMessage({
-                    type: 'success',
-                    text: `${data.message} Welcome, ${data.username}!`,
-                });
                 setEmail('');
                 setPassword('');
                 setUsername('');
             } else {
-                setMessage({ type: 'error', text: data.error });
+                dispatch(loginFailure(data.error));
             }
         } catch (err) {
-            setMessage({ type: 'error', text: 'Network error. Please try again.' });
+            dispatch(loginFailure('Network error. Please try again.'));
             console.error('Resgistration error: ', err);
         }
-
-        setLoading(false);
     };
 
     if (user) {
@@ -67,9 +58,9 @@ function RegisterForm() {
                     Create Account
                 </Typography>
 
-                {message && (
-                    <Alert severity={message.type} sx={{ mb: 3 }}>
-                        {message.text}
+                {error && (
+                    <Alert severity={error} sx={{ mb: 3 }}>
+                        {error}
                     </Alert>
                 )}
 

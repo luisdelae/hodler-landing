@@ -6,15 +6,12 @@ import { Box, TextField, Button, Typography, Alert, Paper } from '@mui/material'
 function LoginForm() {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
-    const [message, setMessage] = useState(null);
 
     const dispatch = useDispatch();
-    const { user, loading } = useSelector((state) => state.auth);
+    const { user, loading, error, success } = useSelector((state) => state.auth);
 
     const handleLogin = async (e) => {
         e.preventDefault();
-        setMessage(null);
-
         dispatch(loginStart());
 
         try {
@@ -37,23 +34,19 @@ function LoginForm() {
                         username: data.username,
                     })
                 );
-                setMessage({ type: 'success', text: data.message });
                 setEmail('');
                 setPassword('');
             } else {
-                setMessage({ type: 'error', text: data.error });
+                dispatch(loginFailure(data.error));
             }
         } catch (err) {
-            const errorMessage = 'Network error. Please try again.';
-            dispatch(loginFailure(errorMessage));
-            setMessage({ type: 'error', text: errorMessage });
+            dispatch(loginFailure('Network error. Please try again.'));
             console.error('Login error:', err);
         }
     };
 
     const handleLogout = () => {
         dispatch(logout());
-        setMessage({ tyoe: 'success', text: 'Logged out successfully' });
     };
 
     if (user) {
@@ -78,9 +71,15 @@ function LoginForm() {
                     Login
                 </Typography>
 
-                {message && (
-                    <Alert severity={message.type} sx={{ mb: 3 }}>
-                        {message.text}
+                {error && (
+                    <Alert severity={'error'} sx={{ mb: 3 }}>
+                        {error}
+                    </Alert>
+                )}
+
+                {!user && success && (
+                    <Alert severity={'success'} sx={{ mb: 3 }}>
+                        {success}
                     </Alert>
                 )}
 

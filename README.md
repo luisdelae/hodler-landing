@@ -93,7 +93,10 @@ Coming from Android development (Jetpack Compose, MVVM, Clean Architecture), thi
 - [x] Install Redux Toolkit
 - [x] Migrate auth state from Context to Redux
 - [x] Refactor components to use Redux
-- [] Add loading/error states globally
+- [x] Add loading/error states globally
+- [ ] React Router setup
+- [ ] Split into pages
+- [ ] Protected routes
 
 ### Weeks 4-5 (Nov 24 - Dec 7, 2025)
 

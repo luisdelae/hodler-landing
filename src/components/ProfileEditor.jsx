@@ -1,21 +1,18 @@
 import { useState, useEffect } from 'react';
 import { Box, TextField, Button, Typography, Alert, Paper, CircularProgress } from '@mui/material';
 import { useDispatch, useSelector } from 'react-redux';
-import { updateUser } from '../store/slices/authSlice';
+import { updateUserStart, updateUserSuccess, updateUserFailure } from '../store/slices/authSlice';
 
 function ProfileEditor() {
-    const dispatch = useDispatch();
-    const user = useSelector((state) => state.auth.user);
     const [username, setUsername] = useState('');
     const [email, setEmail] = useState('');
-    const [loading, setLoading] = useState(false);
     const [fetchingProfile, setFetchingProfile] = useState(true);
-    const [message, setMessage] = useState(null);
+
+    const dispatch = useDispatch();
+    const { user, profileLoading, error, success } = useSelector((state) => state.auth);
 
     useEffect(() => {
         if (!user) return;
-
-        setMessage(null);
 
         const fetchProfile = async () => {
             try {
@@ -36,12 +33,11 @@ function ProfileEditor() {
         };
 
         fetchProfile();
-    }, [user, dispatch]);
+    }, [user]);
 
     const handleUpdate = async (e) => {
         e.preventDefault();
-        setLoading(true);
-        setMessage(null);
+        dispatch(updateUserStart());
 
         try {
             const res = await fetch(
@@ -59,18 +55,14 @@ function ProfileEditor() {
             const data = await res.json();
 
             if (res.ok) {
-                console.log(data);
-                dispatch(updateUser({ username: data.user.username }));
-                setMessage({ type: 'success', text: data.message });
+                dispatch(updateUserSuccess({ username: data.user.username }));
             } else {
-                setMessage({ type: 'error', text: data.error });
+                dispatch(updateUserFailure(data.error || 'Failed to update profile'));
             }
         } catch (err) {
-            setMessage({ type: 'error', text: 'Network error. Please try again.' });
+            dispatch(updateUserFailure('Network error. Please try again.'));
             console.error('Update error: ', err);
         }
-
-        setLoading(false);
     };
 
     if (!user) {
@@ -103,9 +95,15 @@ function ProfileEditor() {
                     Edit Profile
                 </Typography>
 
-                {message && (
-                    <Alert severity={message.type} sx={{ mb: 3 }}>
-                        {message.text}
+                {success && (
+                    <Alert severity="success" sx={{ mb: 3 }}>
+                        {success}
+                    </Alert>
+                )}
+
+                {error && (
+                    <Alert severity="error" sx={{ mb: 3 }}>
+                        {error}
                     </Alert>
                 )}
 
@@ -133,9 +131,9 @@ function ProfileEditor() {
                         variant="contained"
                         fullWidth
                         size="large"
-                        disabled={loading}
+                        disabled={profileLoading}
                     >
-                        {loading ? 'Updating...' : 'Update Profile'}
+                        {profileLoading ? 'Updating...' : 'Update Profile'}
                     </Button>
                 </Box>
             </Paper>

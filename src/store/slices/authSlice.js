@@ -3,7 +3,9 @@ import { createSlice } from '@reduxjs/toolkit';
 const initialState = {
     user: null,
     loading: false,
+    profileLoading: false,
     error: null,
+    success: null,
 };
 
 const authSlice = createSlice({
@@ -12,12 +14,11 @@ const authSlice = createSlice({
     reducers: {
         loginStart: (state) => {
             state.loading = true;
-            state.error = null;
         },
         loginSuccess: (state, action) => {
             state.loading = false;
             state.user = action.payload;
-            state.error = null;
+            state.success = null;
 
             localStorage.setItem('authToken', action.payload.token);
             localStorage.setItem('userId', action.payload.userId);
@@ -30,6 +31,7 @@ const authSlice = createSlice({
         logout: (state) => {
             state.user = null;
             state.error = null;
+            state.success = 'Logged out sucessfully';
 
             localStorage.removeItem('authToken');
             localStorage.removeItem('userId');
@@ -38,7 +40,13 @@ const authSlice = createSlice({
         restoreUser: (state, action) => {
             state.user = action.payload;
         },
-        updateUser: (state, action) => {
+        updateUserStart: (state) => {
+            state.profileLoading = true;
+        },
+        updateUserSuccess: (state, action) => {
+            state.profileLoading = false;
+            state.success = 'Profile updated successfully';
+
             if (state.user) {
                 state.user = {
                     ...state.user,
@@ -50,9 +58,42 @@ const authSlice = createSlice({
                 localStorage.setItem('username', action.payload.username);
             }
         },
+        updateUserFailure: (state, action) => {
+            state.profileLoading = false;
+            state.error = action.payload;
+        },
+    },
+    extraReducers: (builder) => {
+        builder.addMatcher(
+            (action) => action.type.endsWith('/start'),
+            (state) => {
+                state.error = null;
+                state.success = null;
+            }
+        );
+        builder.addMatcher(
+            (action) => action.type.endsWith('/success'),
+            (state) => {
+                state.error = null;
+            }
+        );
+        builder.addMatcher(
+            (action) => action.type.endsWith('/failure'),
+            (state) => {
+                state.success = null;
+            }
+        );
     },
 });
 
-export const { loginStart, loginSuccess, loginFailure, logout, restoreUser, updateUser } =
-    authSlice.actions;
+export const {
+    loginStart,
+    loginSuccess,
+    loginFailure,
+    logout,
+    restoreUser,
+    updateUserStart,
+    updateUserSuccess,
+    updateUserFailure,
+} = authSlice.actions;
 export default authSlice.reducer;
