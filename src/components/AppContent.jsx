@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
-import { restoreUser } from '../store/slices/authSlice';
+import { initializeAuth, restoreUser } from '../store/slices/authSlice';
 
 function AppContent() {
     const dispatch = useDispatch();
@@ -12,6 +12,8 @@ function AppContent() {
 
         if (token && userId && username) {
             dispatch(restoreUser({ token, userId, username }));
+        } else {
+            dispatch(initializeAuth());
         }
     }, [dispatch]);
 

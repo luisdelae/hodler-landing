@@ -6,6 +6,7 @@ const initialState = {
     profileLoading: false,
     error: null,
     success: null,
+    isInitialized: false,
 };
 
 const authSlice = createSlice({
@@ -39,6 +40,10 @@ const authSlice = createSlice({
         },
         restoreUser: (state, action) => {
             state.user = action.payload;
+            state.isInitialized = true;
+        },
+        initializeAuth: (state) => {
+            state.isInitialized = true;
         },
         updateUserStart: (state) => {
             state.profileLoading = true;
@@ -92,6 +97,7 @@ export const {
     loginFailure,
     logout,
     restoreUser,
+    initializeAuth,
     updateUserStart,
     updateUserSuccess,
     updateUserFailure,
