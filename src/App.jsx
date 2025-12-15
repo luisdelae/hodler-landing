@@ -12,6 +12,7 @@ import LoginPage from './pages/LoginPage';
 import RegisterPage from './pages/RegisterPage';
 import DashboardPage from './pages/DashboardPage';
 import ProtectedRoute from './components/ProtectedRoute';
+import NotFoundPage from './pages/NotFoundPage';
 
 function App() {
     const [darkMode, setDarkMode] = useState(() => {
@@ -58,7 +59,7 @@ function App() {
                 <CssBaseline />
                 <Router>
                     <AppContent />
-                    <NavBar darkMode={darkMode} setDarklMode={setDarkMode} />
+                    <NavBar darkMode={darkMode} setDarkMode={setDarkMode} />
                     <Routes>
                         <Route path="/" element={<LandingPage />} />
                         <Route path="/login" element={<LoginPage />} />
@@ -71,6 +72,7 @@ function App() {
                                 </ProtectedRoute>
                             }
                         />
+                        <Route path="*" element={<NotFoundPage />} />
                     </Routes>
                     <Footer />
                 </Router>

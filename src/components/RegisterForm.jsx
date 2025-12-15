@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 import { loginFailure, loginStart, loginSuccess } from '../store/slices/authSlice';
 import { Box, TextField, Button, Typography, Alert, Paper } from '@mui/material';
 
@@ -9,7 +10,8 @@ function RegisterForm() {
     const [username, setUsername] = useState('');
 
     const dispatch = useDispatch();
-    const { user, loading, error } = useSelector((state) => state.auth);
+    const navigate = useNavigate();
+    const { loading, error } = useSelector((state) => state.auth);
 
     const handleRegister = async (e) => {
         e.preventDefault();
@@ -38,6 +40,7 @@ function RegisterForm() {
                 setEmail('');
                 setPassword('');
                 setUsername('');
+                navigate('/dashboard');
             } else {
                 dispatch(loginFailure(data.error));
             }
@@ -46,10 +49,6 @@ function RegisterForm() {
             console.error('Resgistration error: ', err);
         }
     };
-
-    if (user) {
-        return <></>;
-    }
 
     return (
         <Box sx={{ p: 4, maxWidth: 500, mx: 'auto' }}>

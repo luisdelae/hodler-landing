@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { loginStart, loginSuccess, loginFailure, logout } from '../store/slices/authSlice';
+import { useNavigate } from 'react-router-dom';
+import { loginStart, loginSuccess, loginFailure } from '../store/slices/authSlice';
 import { Box, TextField, Button, Typography, Alert, Paper } from '@mui/material';
 
 function LoginForm() {
@@ -8,6 +9,7 @@ function LoginForm() {
     const [password, setPassword] = useState('');
 
     const dispatch = useDispatch();
+    const navigate = useNavigate();
     const { user, loading, error, success } = useSelector((state) => state.auth);
 
     const handleLogin = async (e) => {
@@ -36,6 +38,7 @@ function LoginForm() {
                 );
                 setEmail('');
                 setPassword('');
+                navigate('/dashboard');
             } else {
                 dispatch(loginFailure(data.error));
             }
@@ -44,25 +47,6 @@ function LoginForm() {
             console.error('Login error:', err);
         }
     };
-
-    const handleLogout = () => {
-        dispatch(logout());
-    };
-
-    if (user) {
-        return (
-            <Box sx={{ p: 4, maxWidth: 500, mx: 'auto' }}>
-                <Paper elevation={3} sx={{ p: 4, textAlign: 'center' }}>
-                    <Typography variant="h4" gutterBottom color="success.main">
-                        Welcome, {user.username}!
-                    </Typography>
-                    <Button variant="outlined" color="error" onClick={handleLogout}>
-                        Logout
-                    </Button>
-                </Paper>
-            </Box>
-        );
-    }
 
     return (
         <Box sx={{ p: 4, maxWidth: 500, mx: 'auto' }}>
