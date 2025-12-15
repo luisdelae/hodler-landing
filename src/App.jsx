@@ -1,9 +1,16 @@
 import { createTheme, ThemeProvider } from '@mui/material/styles';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { CssBaseline } from '@mui/material';
 import { useState, useEffect } from 'react';
 import { Provider } from 'react-redux';
 import store from './store';
 import AppContent from './components/AppContent';
+import NavBar from './components/NavBar';
+import Footer from './components/Footer';
+import LandingPage from './pages/LandingPage';
+import LoginPage from './pages/LoginPage';
+import RegisterPage from './pages/RegisterPage';
+import DashboardPage from './pages/DashboardPage';
 
 function App() {
     const [darkMode, setDarkMode] = useState(() => {
@@ -48,7 +55,17 @@ function App() {
         <Provider store={store}>
             <ThemeProvider theme={theme}>
                 <CssBaseline />
-                <AppContent darkMode={darkMode} setDarkMode={setDarkMode} />
+                <Router>
+                    <AppContent />
+                    <NavBar darkMode={darkMode} setDarklMode={setDarkMode} />
+                    <Routes>
+                        <Route path="/" element={<LandingPage />} />
+                        <Route path="/login" element={<LoginPage />} />
+                        <Route path="/register" element={<RegisterPage />} />
+                        <Route path="/dashboard" element={<DashboardPage />} />
+                    </Routes>
+                    <Footer />
+                </Router>
             </ThemeProvider>
         </Provider>
     );
