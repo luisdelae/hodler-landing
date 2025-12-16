@@ -88,7 +88,7 @@ Coming from Android development (Jetpack Compose, MVVM, Clean Architecture), thi
 - [x] Update profile Lambda + endpoint
 - [x] ProfileEditor component
 
-### Week 3 (Nov 17-23, 2025) - In Progress
+### Week 3 (Nov 17-23, 2025) - Complete ✅
 
 - [x] Install Redux Toolkit
 - [x] Migrate auth state from Context to Redux
@@ -98,23 +98,23 @@ Coming from Android development (Jetpack Compose, MVVM, Clean Architecture), thi
 - [x] Split into pages
 - [x] Protected routes
 
-### Weeks 4-5 (Nov 24 - Dec 7, 2025)
+### Week 4 (Dec 16-22, 2025) - In Progress
 
-- [ ] Leaderboard backend (Lambda + DynamoDB + EventBridge)
-- [ ] SNS for achievement notifications ("You hit top 10!")
-- [ ] Email verification on registration (SNS + verification tokens, refactor registration)
-- [ ] SQS for async leaderboard processing
-- [ ] DynamoDB GSI for efficient email lookups (refactor from scan)
-- [ ] Add user dashboard page
-- [ ] Display global leaderboard component
-- [ ] Show user rank and stats
+- [ ] SNS email notifications (welcome emails + verification flow)
+- [ ] Leaderboard backend (DynamoDB, submitScore, getLeaderboard Lambdas)
+- [ ] SQS async score processing queue
+- [ ] EventBridge scheduled rankings calculation
+- [ ] S3 profile picture uploads with pre-signed URLs
+- [ ] Leaderboard frontend (top 10 display, user rank)
+- [ ] DynamoDB GSI for email lookups (refactor getUserProfile)
 
-### Weeks 6-7 (Dec 8-21, 2025)
+### Week 5 (Dec 23-29, 2025)
 
-- [ ] Infrastructure as Code with Terraform
-- [ ] CI/CD pipeline with GitHub Actions
-- [ ] Environment variables for API endpoints (dev/prod)
-- [ ] Production build optimization
+- [ ] Terraform infrastructure as code (all AWS resources)
+- [ ] GitHub Actions CI/CD pipeline
+- [ ] Dev/prod environment separation
+- [ ] Final production deployment
+- [ ] Documentation polish
 
 ### Target Completion: End of December 2025
 
