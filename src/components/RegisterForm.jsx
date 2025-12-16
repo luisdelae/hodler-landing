@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { loginFailure, loginStart, loginSuccess } from '../store/slices/authSlice';
 import { Box, TextField, Button, Typography, Alert, Paper } from '@mui/material';
 
@@ -58,7 +58,7 @@ function RegisterForm() {
                 </Typography>
 
                 {error && (
-                    <Alert severity={error} sx={{ mb: 3 }}>
+                    <Alert severity={'error'} sx={{ mb: 3 }}>
                         {error}
                     </Alert>
                 )}
@@ -103,6 +103,24 @@ function RegisterForm() {
                     >
                         {loading ? 'Creating Account...' : 'Register'}
                     </Button>
+
+                    <Box sx={{ mt: 2, textAlign: 'center' }}>
+                        <Typography variant="body2" color="text.secondary">
+                            Already have an account?{' '}
+                        </Typography>
+                        <Typography
+                            component={Link}
+                            to="/login"
+                            variant="body2"
+                            sx={{
+                                color: 'primary.main',
+                                textDecoration: 'none',
+                                fontWeight: 'bold',
+                            }}
+                        >
+                            Log in
+                        </Typography>
+                    </Box>
                 </Box>
             </Paper>
         </Box>

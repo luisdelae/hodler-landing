@@ -94,9 +94,9 @@ Coming from Android development (Jetpack Compose, MVVM, Clean Architecture), thi
 - [x] Migrate auth state from Context to Redux
 - [x] Refactor components to use Redux
 - [x] Add loading/error states globally
-- [ ] React Router setup
-- [ ] Split into pages
-- [ ] Protected routes
+- [x] React Router setup
+- [x] Split into pages
+- [x] Protected routes
 
 ### Weeks 4-5 (Nov 24 - Dec 7, 2025)
 

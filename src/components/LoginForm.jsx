@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { loginStart, loginSuccess, loginFailure } from '../store/slices/authSlice';
 import { Box, TextField, Button, Typography, Alert, Paper } from '@mui/material';
 
@@ -97,6 +97,24 @@ function LoginForm() {
                     >
                         {loading ? 'Logging in...' : 'Login'}
                     </Button>
+
+                    <Box sx={{ mt: 2, textAlign: 'center' }}>
+                        <Typography variant="body2" color="text.secondary">
+                            Don't have an account?{' '}
+                        </Typography>
+                        <Typography
+                            component={Link}
+                            to="/register"
+                            variant="body2"
+                            sx={{
+                                color: 'primary.main',
+                                textDecoration: 'none',
+                                fontWeight: 'bold',
+                            }}
+                        >
+                            Sign up
+                        </Typography>
+                    </Box>
                 </Box>
             </Paper>
         </Box>

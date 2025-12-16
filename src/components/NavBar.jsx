@@ -42,16 +42,39 @@ function NavBar({ darkMode, setDarkMode }) {
                     {darkMode ? <Brightness7 /> : <Brightness4 />}
                 </IconButton>
 
-                <Box sx={{ display: 'flex', gap: 2, alignItems: 'center' }}>
+                <Box
+                    sx={{
+                        display: 'flex',
+                        gap: { xs: 0.5, sm: 2 },
+                        alignItems: 'center',
+                        flexWrap: 'nowrap',
+                    }}
+                >
                     {user ? (
                         <>
-                            <Button color="inherit" component={Link} to="/dashboard">
+                            <Button
+                                color="inherit"
+                                component={Link}
+                                to="/dashboard"
+                                sx={{ display: { xs: 'none', sm: 'inline-flex' } }}
+                            >
                                 Dashboard
                             </Button>
                             <Button color="inherit" onClick={handleLogout}>
                                 Logout
                             </Button>
-                            <Typography variant="body2" sx={{ ml: 1 }}>
+                            <Typography
+                                variant="body2"
+                                sx={{
+                                    ml: { xs: 0.5, sm: 1 },
+                                    mr: { xs: 0.5, sm: 0 },
+                                    fontSize: { xs: '0.75rem', sm: '0.875rem' },
+                                    maxWidth: { xs: '80px', sm: 'none' },
+                                    overflow: 'hidden',
+                                    textOverflow: 'ellipsis',
+                                    whiteSpace: 'nowrap',
+                                }}
+                            >
                                 {user.username}
                             </Typography>
                         </>

@@ -67,6 +67,10 @@ const authSlice = createSlice({
             state.profileLoading = false;
             state.error = action.payload;
         },
+        clearMessages: (state) => {
+            state.error = null;
+            state.success = null;
+        },
     },
     extraReducers: (builder) => {
         builder.addMatcher(
@@ -101,5 +105,6 @@ export const {
     updateUserStart,
     updateUserSuccess,
     updateUserFailure,
+    clearMessages,
 } = authSlice.actions;
 export default authSlice.reducer;
