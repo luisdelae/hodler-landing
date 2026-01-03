@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Link, useNavigate } from 'react-router-dom';
 import { loginStart, loginSuccess, loginFailure } from '../store/slices/authSlice';
 import { Box, TextField, Button, Typography, Alert, Paper } from '@mui/material';
+import config from '../config';
 
 function LoginForm() {
     const [email, setEmail] = useState('');
@@ -17,14 +18,11 @@ function LoginForm() {
         dispatch(loginStart());
 
         try {
-            const response = await fetch(
-                'https://5bnu3oi26m.execute-api.us-east-1.amazonaws.com/prod/auth/login',
-                {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({ email, password }),
-                }
-            );
+            const response = await fetch(`${config.apiBaseUrl}/auth/login`, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ email, password }),
+            });
 
             const data = await response.json();
 

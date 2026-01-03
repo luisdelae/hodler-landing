@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { Box, TextField, Button, Typography, Alert, Paper, CircularProgress } from '@mui/material';
 import { useDispatch, useSelector } from 'react-redux';
 import { updateUserStart, updateUserSuccess, updateUserFailure } from '../store/slices/authSlice';
+import config from '../config';
 
 function ProfileEditor() {
     const [username, setUsername] = useState('');
@@ -16,9 +17,7 @@ function ProfileEditor() {
 
         const fetchProfile = async () => {
             try {
-                const res = await fetch(
-                    `https://5bnu3oi26m.execute-api.us-east-1.amazonaws.com/prod/users/${user.userId}/profile`
-                );
+                const res = await fetch(`${config.apiBaseUrl}/users/${user.userId}/profile`);
 
                 if (res.ok) {
                     const data = await res.json();

@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Link, useNavigate } from 'react-router-dom';
 import { loginFailure, loginStart, loginSuccess } from '../store/slices/authSlice';
 import { Box, TextField, Button, Typography, Alert, Paper } from '@mui/material';
+import config from '../config';
 
 function RegisterForm() {
     const [email, setEmail] = useState('');
@@ -18,14 +19,11 @@ function RegisterForm() {
         dispatch(loginStart());
 
         try {
-            const response = await fetch(
-                'https://5bnu3oi26m.execute-api.us-east-1.amazonaws.com/prod/auth/register',
-                {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({ email, password, username }),
-                }
-            );
+            const response = await fetch(`${config.apiBaseUrl}/auth/register`, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ email, password, username }),
+            });
 
             const data = await response.json();
 
@@ -75,12 +73,12 @@ function RegisterForm() {
                     />
 
                     <TextField
-                        label="Username (optional)"
+                        label="Username"
                         value={username}
                         onChange={(e) => setUsername(e.target.value)}
+                        required
                         fullWidth
                         sx={{ mb: 2 }}
-                        helperText="Leave blank to use email prefix"
                     />
 
                     <TextField
