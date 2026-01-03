@@ -4,7 +4,7 @@ Marketing site for Hodler - a cryptocurrency trading simulator Android app.
 
 ## Live Site
 
-https://hodler-landing.vercel.app/
+https://www.hodlersim.app/
 
 ## About Hodler
 
@@ -100,7 +100,7 @@ Coming from Android development (Jetpack Compose, MVVM, Clean Architecture), thi
 
 ### Week 4 (Dec 16-22, 2025) - In Progress
 
-- [ ] SNS email notifications (welcome emails + verification flow)
+- [x] SNS email notifications (welcome emails + verification flow)
 - [ ] Leaderboard backend (DynamoDB, submitScore, getLeaderboard Lambdas)
 - [ ] SQS async score processing queue
 - [ ] EventBridge scheduled rankings calculation

@@ -13,6 +13,7 @@ import RegisterPage from './pages/RegisterPage';
 import DashboardPage from './pages/DashboardPage';
 import ProtectedRoute from './components/ProtectedRoute';
 import NotFoundPage from './pages/NotFoundPage';
+import EmailVerifyPage from './pages/EmailVerifyPage';
 
 function App() {
     const [darkMode, setDarkMode] = useState(() => {
@@ -49,7 +50,7 @@ function App() {
                           default: '#ffffff',
                           paper: '#f8f9fa',
                       },
-                  }),
+                }),
         },
     });
 
@@ -64,6 +65,7 @@ function App() {
                         <Route path="/" element={<LandingPage />} />
                         <Route path="/login" element={<LoginPage />} />
                         <Route path="/register" element={<RegisterPage />} />
+                        <Route path="/verify" element={<EmailVerifyPage />} />
                         <Route
                             path="/dashboard"
                             element={

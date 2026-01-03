@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link, useNavigate } from 'react-router-dom';
-import { loginFailure, loginStart, loginSuccess } from '../store/slices/authSlice';
+import { loginFailure, loginStart } from '../store/slices/authSlice';
 import { Box, TextField, Button, Typography, Alert, Paper } from '@mui/material';
 import config from '../config';
 
@@ -9,9 +9,9 @@ function RegisterForm() {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [username, setUsername] = useState('');
+    const [successMessage, setSuccessMessage] = useState('');
 
     const dispatch = useDispatch();
-    const navigate = useNavigate();
     const { loading, error } = useSelector((state) => state.auth);
 
     const handleRegister = async (e) => {
@@ -28,17 +28,13 @@ function RegisterForm() {
             const data = await response.json();
 
             if (response.ok) {
-                dispatch(
-                    loginSuccess({
-                        token: data.token,
-                        userId: data.userId,
-                        username: data.username,
-                    })
-                );
                 setEmail('');
                 setPassword('');
                 setUsername('');
-                navigate('/dashboard');
+
+                setSuccessMessage(
+                    'Registration successful! Please check your email to verify your account.'
+                );
             } else {
                 dispatch(loginFailure(data.error));
             }
@@ -58,6 +54,31 @@ function RegisterForm() {
                 {error && (
                     <Alert severity={'error'} sx={{ mb: 3 }}>
                         {error}
+                    </Alert>
+                )}
+
+                {successMessage && (
+                    <Alert severity="success" sx={{ mb: 3 }}>
+                        <Typography variant="body1" gutterBottom>
+                            Registration successful! Please check your email to verify your account.
+                        </Typography>
+                        <Typography variant="body2" sx={{ mt: 1 }}>
+                            Didn't receive an email? Check your spam folder.
+                        </Typography>
+                        <Typography variant="body2" sx={{ mt: 2 }}>
+                            Already verified?{' '}
+                            <Typography
+                                component={Link}
+                                to="/login"
+                                sx={{
+                                    color: 'primary.main',
+                                    textDecoration: 'none',
+                                    fontWeight: 'bold',
+                                }}
+                            >
+                                Log in here
+                            </Typography>
+                        </Typography>
                     </Alert>
                 )}
 
