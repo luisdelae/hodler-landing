@@ -10,6 +10,7 @@ function RegisterForm() {
     const [password, setPassword] = useState('');
     const [username, setUsername] = useState('');
     const [successMessage, setSuccessMessage] = useState('');
+    const [isRegistered, setIsRegistered] = useState(false);
 
     const dispatch = useDispatch();
     const { loading, error } = useSelector((state) => state.auth);
@@ -39,6 +40,8 @@ function RegisterForm() {
                 setSuccessMessage(
                     'Registration successful! Please check your email to verify your account.'
                 );
+                setIsRegistered(true);
+                dispatch(loginFailure(null));
             } else {
                 dispatch(loginFailure(data.error));
             }
@@ -86,65 +89,67 @@ function RegisterForm() {
                     </Alert>
                 )}
 
-                <Box component="form" onSubmit={handleRegister}>
-                    <TextField
-                        label="Email"
-                        type="email"
-                        value={email}
-                        onChange={(e) => setEmail(e.target.value)}
-                        required
-                        fullWidth
-                        sx={{ mb: 2 }}
-                    />
+                {!isRegistered && (
+                    <Box component="form" onSubmit={handleRegister}>
+                        <TextField
+                            label="Email"
+                            type="email"
+                            value={email}
+                            onChange={(e) => setEmail(e.target.value)}
+                            required
+                            fullWidth
+                            sx={{ mb: 2 }}
+                        />
 
-                    <TextField
-                        label="Username"
-                        value={username}
-                        onChange={(e) => setUsername(e.target.value)}
-                        required
-                        fullWidth
-                        sx={{ mb: 2 }}
-                    />
+                        <TextField
+                            label="Username"
+                            value={username}
+                            onChange={(e) => setUsername(e.target.value)}
+                            required
+                            fullWidth
+                            sx={{ mb: 2 }}
+                        />
 
-                    <TextField
-                        label="Password"
-                        type="password"
-                        value={password}
-                        onChange={(e) => setPassword(e.target.value)}
-                        required
-                        fullWidth
-                        sx={{ mb: 2 }}
-                        helperText="Min 8 chars, uppercase, lowercase, number, special character"
-                    />
+                        <TextField
+                            label="Password"
+                            type="password"
+                            value={password}
+                            onChange={(e) => setPassword(e.target.value)}
+                            required
+                            fullWidth
+                            sx={{ mb: 2 }}
+                            helperText="Min 8 chars, uppercase, lowercase, number, special character"
+                        />
 
-                    <Button
-                        type="submit"
-                        variant="contained"
-                        fullWidth
-                        size="large"
-                        disabled={loading}
-                    >
-                        {loading ? 'Creating Account...' : 'Register'}
-                    </Button>
-
-                    <Box sx={{ mt: 2, textAlign: 'center' }}>
-                        <Typography variant="body2" color="text.secondary">
-                            Already have an account?{' '}
-                        </Typography>
-                        <Typography
-                            component={Link}
-                            to="/login"
-                            variant="body2"
-                            sx={{
-                                color: 'primary.main',
-                                textDecoration: 'none',
-                                fontWeight: 'bold',
-                            }}
+                        <Button
+                            type="submit"
+                            variant="contained"
+                            fullWidth
+                            size="large"
+                            disabled={loading}
                         >
-                            Log in
-                        </Typography>
+                            {loading ? 'Creating Account...' : 'Register'}
+                        </Button>
+
+                        <Box sx={{ mt: 2, textAlign: 'center' }}>
+                            <Typography variant="body2" color="text.secondary">
+                                Already have an account?{' '}
+                            </Typography>
+                            <Typography
+                                component={Link}
+                                to="/login"
+                                variant="body2"
+                                sx={{
+                                    color: 'primary.main',
+                                    textDecoration: 'none',
+                                    fontWeight: 'bold',
+                                }}
+                            >
+                                Log in
+                            </Typography>
+                        </Box>
                     </Box>
-                </Box>
+                )}
             </Paper>
         </Box>
     );
