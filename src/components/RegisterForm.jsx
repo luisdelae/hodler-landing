@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { loginFailure, loginStart } from '../store/slices/authSlice';
 import { Box, TextField, Button, Typography, Alert, Paper } from '@mui/material';
 import config from '../config';
@@ -28,6 +28,10 @@ function RegisterForm() {
             const data = await response.json();
 
             if (response.ok) {
+                localStorage.removeItem('authToken');
+                localStorage.removeItem('userId');
+                localStorage.removeItem('username');
+
                 setEmail('');
                 setPassword('');
                 setUsername('');

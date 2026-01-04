@@ -21,9 +21,11 @@ const authSlice = createSlice({
             state.user = action.payload;
             state.success = null;
 
-            localStorage.setItem('authToken', action.payload.token);
-            localStorage.setItem('userId', action.payload.userId);
-            localStorage.setItem('username', action.payload.username);
+            if (action.payload.token && action.payload.token !== 'undefined') {
+                localStorage.setItem('authToken', action.payload.token);
+                localStorage.setItem('userId', action.payload.userId);
+                localStorage.setItem('username', action.payload.username);
+            }
         },
         loginFailure: (state, action) => {
             state.loading = false;

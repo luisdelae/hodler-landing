@@ -10,7 +10,7 @@ function AppContent() {
         const userId = localStorage.getItem('userId');
         const username = localStorage.getItem('username');
 
-        if (token && userId && username) {
+        if (token && token !== 'undefined' && userId && username) {
             dispatch(restoreUser({ token, userId, username }));
         } else {
             dispatch(initializeAuth());
